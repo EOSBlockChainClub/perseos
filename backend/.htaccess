@@ -1,0 +1,13 @@
+php_flag display_errors on
+
+RewriteEngine on
+RewriteBase /
+
+RewriteCond %{SCRIPT_FILENAME} -f
+RewriteRule ^.+ - [L]
+
+RewriteCond %{SCRIPT_FILENAME} ^(/[^/]+)
+RewriteCond %{DOCUMENT_ROOT}%1 -d
+RewriteRule ^.+ - [L]
+
+RewriteRule (.+) /index.php?url=$1 [L,QSA]
