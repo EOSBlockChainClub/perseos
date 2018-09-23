@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 import ManageData from './views/ManageData.vue'
 import SignIn from './views/SignIn.vue'
 import SignUp from './views/SignUp.vue'
+import Services from './views/Services.vue'
+import Activity from './views/Activity.vue'
 
 Vue.use(Router)
 
@@ -24,6 +26,16 @@ export default new Router({
       path: '/SignUp',
       name: 'signUp',
       component: SignUp
+    },
+    {
+      path: '/Services',
+      name: 'services',
+      component: Services
+    },
+    {
+      path: '/Activity',
+      name: 'activity',
+      component: Activity
     },
     {
       path: '/ManageData',

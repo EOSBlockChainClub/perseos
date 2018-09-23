@@ -19,6 +19,9 @@ export default new Vuex.Store({
   getters: {
     isUser: state => {
       return state.user != null
+    },
+    getUser: state => {
+      return state.user
     }
   },
   actions: {

@@ -14,7 +14,7 @@
               <v-text-field v-model="email" required label="E-mail" />
               <v-text-field v-model="password" type="password" required label="Password" />
               <div class="text-xs-right">
-                <v-btn color="primary" @click="signIn()">SIGN IN</v-btn>
+                <v-btn color="#7A589E" class="white--text" @click="signIn()">SIGN IN</v-btn>
                 <v-btn flat @click="$router.push({name: 'signUp'})">SIGN UP</v-btn>
               </div>
             </form>
