@@ -15,7 +15,7 @@
               <v-text-field v-model="password" type="password" required label="Password" />
               <v-text-field v-model="confirmPassword" type="password" required label="Confirm password" />
               <div class="text-xs-right">
-                <v-btn color="primary" @click="signUpUser()">SIGN UP</v-btn>
+                <v-btn color="#7A589E" class="white--text" @click="signUpUser()">SIGN UP</v-btn>
                 <v-btn flat @click="$router.push({name: 'signIn'})">SIGN IN</v-btn>
               </div>
             </form>
