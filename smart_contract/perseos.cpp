@@ -60,24 +60,91 @@ public:
     }
   }
 
+  void updateuser(account_name user,
+                  std::string firstname,
+                  std::string lastname,
+                  std::string email,
+                  std::string phoneNumber,
+                  std::string liveIdPhoto,
+                  std::string govIdNumber,
+                  std::string govIdPhoto,
+                  std::string passportIdNumber,
+                  std::string passportIdPhoto,
+                  std::string drivingLincenceIdNumber,
+                  std::string drivingLincenceIdPhoto,
+                  std::string street,
+                  std::string city,
+                  std::string proofOfAddress,
+                  std::string certifiedIncome,
+                  std::string country)
+  {
+    require_auth(user);
+
+    user_index users(_self, _self);
+
+    auto userDb = users.find(user);
+    if (userDb == users.end())
+    {
+      print("Users don't exists");
+    }
+    else
+    {
+      users.modify(userDb, _self, [&](auto &newUser) {
+        if (firstname != "noChange" && firstname != "")
+          newUser.firstname = firstname;
+        if (lastname != "noChange" && lastname != "")
+          newUser.lastname = lastname;
+        if (email != "noChange" && email != "")
+          newUser.email = email;
+        if (phoneNumber != "noChange" && phoneNumber != "")
+          newUser.phoneNumber = phoneNumber;
+        if (liveIdPhoto != "noChange" && liveIdPhoto != "")
+          newUser.liveIdPhoto = liveIdPhoto;
+        if (govIdNumber != "noChange" && govIdNumber != "")
+          newUser.govIdNumber = govIdNumber;
+        if (govIdPhoto != "noChange" && govIdPhoto != "")
+          newUser.govIdPhoto = govIdPhoto;
+        if (passportIdNumber != "noChange" && passportIdNumber != "")
+          newUser.passportIdNumber = passportIdNumber;
+        if (passportIdPhoto != "noChange" && passportIdPhoto != "")
+          newUser.passportIdPhoto = passportIdPhoto;
+        if (drivingLincenceIdNumber != "noChange" && drivingLincenceIdNumber != "")
+          newUser.drivingLincenceIdNumber = drivingLincenceIdNumber;
+        if (drivingLincenceIdPhoto != "noChange" && drivingLincenceIdPhoto != "")
+          newUser.drivingLincenceIdPhoto = drivingLincenceIdPhoto;
+        if (street != "noChange" && street != "")
+          newUser.street = street;
+        if (city != "noChange" && city != "")
+          newUser.city = city;
+        if (proofOfAddress != "noChange" && proofOfAddress != "")
+          newUser.proofOfAddress = proofOfAddress;
+        if (certifiedIncome != "noChange" && certifiedIncome != "")
+          newUser.certifiedIncome = certifiedIncome;
+        if (country != "noChange" && country != "")
+          newUser.country = country;
+      });
+      print("User successfuly updated");
+    }
+  }
+
   void createaccess(account_name user,
-               uint64_t applicationId,
-               std::string firstname,
-               std::string lastname,
-               std::string email,
-               std::string phoneNumber,
-               std::string liveIdPhoto,
-               std::string govIdNumber,
-               std::string govIdPhoto,
-               std::string passportIdNumber,
-               std::string passportIdPhoto,
-               std::string drivingLincenceIdNumber,
-               std::string drivingLincenceIdPhoto,
-               std::string street,
-               std::string city,
-               std::string proofOfAddress,
-               std::string certifiedIncome,
-               std::string country)
+                    uint64_t applicationId,
+                    std::string firstname,
+                    std::string lastname,
+                    std::string email,
+                    std::string phoneNumber,
+                    std::string liveIdPhoto,
+                    std::string govIdNumber,
+                    std::string govIdPhoto,
+                    std::string passportIdNumber,
+                    std::string passportIdPhoto,
+                    std::string drivingLincenceIdNumber,
+                    std::string drivingLincenceIdPhoto,
+                    std::string street,
+                    std::string city,
+                    std::string proofOfAddress,
+                    std::string certifiedIncome,
+                    std::string country)
   {
     require_auth(user);
 
@@ -111,6 +178,74 @@ public:
         newAccess.country = country;
       });
       print("User successfuly registered");
+    }
+  }
+
+  void updateaccess(account_name user,
+                    uint64_t applicationId,
+                    std::string firstname,
+                    std::string lastname,
+                    std::string email,
+                    std::string phoneNumber,
+                    std::string liveIdPhoto,
+                    std::string govIdNumber,
+                    std::string govIdPhoto,
+                    std::string passportIdNumber,
+                    std::string passportIdPhoto,
+                    std::string drivingLincenceIdNumber,
+                    std::string drivingLincenceIdPhoto,
+                    std::string street,
+                    std::string city,
+                    std::string proofOfAddress,
+                    std::string certifiedIncome,
+                    std::string country)
+  {
+    require_auth(user);
+
+    access_index accesses(_self, _self);
+
+    auto accessDb = accesses.find(applicationId * 1000000 + user);
+    if (accessDb == accesses.end())
+    {
+      print("Users is not registered in this service");
+    }
+    else
+    {
+      accesses.modify(accessDb, _self, [&](auto &newAccess) {
+        if (firstname != "noChange" && firstname != "")
+          newAccess.firstname = firstname;
+        if (lastname != "noChange" && lastname != "")
+          newAccess.lastname = lastname;
+        if (email != "noChange" && email != "")
+          newAccess.email = email;
+        if (phoneNumber != "noChange" && phoneNumber != "")
+          newAccess.phoneNumber = phoneNumber;
+        if (liveIdPhoto != "noChange" && liveIdPhoto != "")
+          newAccess.liveIdPhoto = liveIdPhoto;
+        if (govIdNumber != "noChange" && govIdNumber != "")
+          newAccess.govIdNumber = govIdNumber;
+        if (govIdPhoto != "noChange" && govIdPhoto != "")
+          newAccess.govIdPhoto = govIdPhoto;
+        if (passportIdNumber != "noChange" && passportIdNumber != "")
+          newAccess.passportIdNumber = passportIdNumber;
+        if (passportIdPhoto != "noChange" && passportIdPhoto != "")
+          newAccess.passportIdPhoto = passportIdPhoto;
+        if (drivingLincenceIdNumber != "noChange" && drivingLincenceIdNumber != "")
+          newAccess.drivingLincenceIdNumber = drivingLincenceIdNumber;
+        if (drivingLincenceIdPhoto != "noChange" && drivingLincenceIdPhoto != "")
+          newAccess.drivingLincenceIdPhoto = drivingLincenceIdPhoto;
+        if (street != "noChange" && street != "")
+          newAccess.street = street;
+        if (city != "noChange" && city != "")
+          newAccess.city = city;
+        if (proofOfAddress != "noChange" && proofOfAddress != "")
+          newAccess.proofOfAddress = proofOfAddress;
+        if (certifiedIncome != "noChange" && certifiedIncome != "")
+          newAccess.certifiedIncome = certifiedIncome;
+        if (country != "noChange" && country != "")
+          newAccess.country = country;
+      });
+      print("User settings successfuly updated");
     }
   }
 
@@ -388,4 +523,4 @@ private:
   typedef eosio::multi_index<N(access), access> access_index;
 };
 
-EOSIO_ABI(perseos, (createuser)(createaccess)(getuserdata)(datadeleted)(datanotdel))
+EOSIO_ABI(perseos, (createuser)(updateuser)(createaccess)(updateaccess)(getuserdata)(datadeleted)(datanotdel))
